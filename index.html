@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ofertas Incríveis — Vitrine de Afiliados</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #f8f5f0;
+  --surface: #ffffff;
+  --surface2: #f2ede6;
+  --border: #e8e0d5;
+  --accent: #e85d26;
+  --accent2: #ff8c5a;
+  --dark: #1a1510;
+  --text: #2d2520;
+  --muted: #9a8f85;
+  --green: #2d8a4e;
+  --radius: 16px;
+  --shadow: 0 4px 24px rgba(26,21,16,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  background: var(--dark);
+  color: #fff;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(232,93,38,0.3) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(232,93,38,0.15) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 48px 40px 0;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232,93,38,0.2);
+  border: 1px solid rgba(232,93,38,0.4);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent2);
+}
+.hero p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  max-width: 500px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* ── SEARCH BAR ────────────────────────────────────────────────── */
+.search-wrap {
+  position: relative;
+  z-index: 10;
+  margin: -28px 40px 0;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 6px 6px 24px;
+  box-shadow: var(--shadow), 0 0 0 4px rgba(232,93,38,0.05);
+  gap: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 0 4px rgba(232,93,38,0.1);
+}
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  background: transparent;
+}
+.search-box input::placeholder { color: var(--muted); }
+.search-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  padding: 12px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.search-btn:hover { background: var(--accent2); transform: scale(1.02); }
+.search-icon { color: var(--muted); font-size: 18px; }
+
+/* ── STATS BAR ─────────────────────────────────────────────────── */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 40px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.stat strong { color: var(--text); font-weight: 600; }
+.filters {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.15s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── GRID ──────────────────────────────────────────────────────── */
+.grid-wrap {
+  padding: 32px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ── CARD ──────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(26,21,16,0.12);
+}
+.card-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.card:hover .card-img img { transform: scale(1.05); }
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 99px;
+  letter-spacing: 0.5px;
+}
+.card-body {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--text);
+}
+.card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+}
+.card-price .atual {
+  font-family: 'DM Mono', monospace;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--accent);
+}
+.card-price .original {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.card-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-loja {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card-loja img {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+.card-cta {
+  background: var(--dark);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+  transition: background 0.15s;
+}
+.card:hover .card-cta { background: var(--accent); }
+
+/* ── EMPTY ─────────────────────────────────────────────────────── */
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--muted);
+}
+.empty .big { font-size: 56px; margin-bottom: 16px; }
+.empty h3 { font-size: 20px; color: var(--text); margin-bottom: 8px; }
+.empty p { font-size: 14px; }
+
+/* ── LOAD MORE ─────────────────────────────────────────────────── */
+.load-more-wrap {
+  text-align: center;
+  padding: 16px 0 48px;
+}
+.load-more {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 99px;
+  padding: 14px 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.2s;
+}
+.load-more:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── FOOTER ────────────────────────────────────────────────────── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 24px;
+  font-size: 13px;
+}
+footer a { color: var(--accent2); text-decoration: none; }
+
+/* ── ADMIN BUTTON ──────────────────────────────────────────────── */
+.admin-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: var(--dark);
+  color: rgba(255,255,255,0.4);
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+  z-index: 100;
+}
+.admin-fab:hover { background: var(--accent); color: #fff; }
+
+/* ── MODAL ADMIN ───────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,21,16,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 36px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 24px 80px rgba(26,21,16,0.2);
+  animation: modalIn 0.3s ease;
+}
+@keyframes modalIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+.modal p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.modal label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.modal input[type=password],
+.modal input[type=text] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 16px;
+}
+.modal input:focus { border-color: var(--accent); }
+.modal-btns {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.btn-modal {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+.btn-modal-primary { background: var(--accent); color: #fff; }
+.btn-modal-primary:hover { background: var(--accent2); }
+.btn-modal-cancel { background: var(--surface2); color: var(--muted); }
+.btn-modal-cancel:hover { background: var(--border); }
+
+/* ── ADMIN PANEL ───────────────────────────────────────────────── */
+.admin-panel {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 36px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 24px 80px rgba(26,21,16,0.2);
+  animation: modalIn 0.3s ease;
+}
+.admin-panel h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+.admin-panel .sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+.dropzone-admin {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  margin-bottom: 16px;
+}
+.dropzone-admin:hover, .dropzone-admin.drag { border-color: var(--accent); background: rgba(232,93,38,0.03); }
+.dropzone-admin input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.dropzone-admin .dz-emoji { font-size: 36px; margin-bottom: 12px; }
+.dropzone-admin p { font-size: 14px; color: var(--muted); }
+.dropzone-admin strong { color: var(--text); }
+.fname {
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: none;
+}
+.btn-upload {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 12px;
+}
+.btn-upload:hover { background: var(--accent2); }
+.btn-upload:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+.btn-logout {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-logout:hover { border-color: var(--text); color: var(--text); }
+.msg {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  display: none;
+}
+.msg.ok { background: #e8f5ee; color: var(--green); border: 1px solid #b8dfc8; }
+.msg.err { background: #fdecea; color: #c0392b; border: 1px solid #f5b7b1; }
+
+/* ── RESPONSIVE ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-inner { padding: 32px 20px 0; }
+  .search-wrap { margin: -24px 20px 0; }
+  .stats-bar { padding: 20px; gap: 16px; }
+  .filters { margin-left: 0; }
+  .grid-wrap { padding: 24px 16px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+}
+
+/* ── SPINNER ───────────────────────────────────────────────────── */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">🔥 Ofertas Selecionadas</div>
+    <h1>Encontre o produto<br/><em>perfeito</em> para você</h1>
+    <p>Milhares de produtos com os melhores preços. Busque, escolha e compre com um clique direto na Shopee.</p>
+  </div>
+</header>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="busca" placeholder="Buscar produto... ex: panela, perfume, fone"/>
+    <button class="search-btn" onclick="buscar()">Buscar</button>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">📦 <strong id="total-count">0</strong> produtos</div>
+  <div class="stat">🛒 Compra segura via Shopee</div>
+  <div class="filters" id="filtros">
+    <button class="filter-btn active" onclick="filtrar('todos', this)">Todos</button>
+    <button class="filter-btn" onclick="filtrar('menor', this)">Menor preço</button>
+    
+    <button class="filter-btn" onclick="filtrar('az', this)">A-Z</button>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <div class="grid" id="grid">
+    <div class="empty">
+      <div class="big">🛍️</div>
+      <h3>Carregando produtos...</h3>
+    </div>
+  </div>
+  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+    <button class="load-more" onclick="verMais()">Ver mais produtos</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>As melhores ofertas selecionadas para você · Preços sujeitos a alteração. <a href="#" onclick="abrirAdmin()">⚙</a></p>
+</footer>
+
+<!-- ADMIN FAB -->
+<button class="admin-fab" onclick="abrirAdmin()" title="Admin">⚙</button>
+
+<!-- MODAL LOGIN -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal">
+    <h2>Área Admin</h2>
+    <p>Digite a senha para acessar o painel de gerenciamento.</p>
+    <label>Senha</label>
+    <input type="password" id="senha-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/>
+    <div id="login-err" style="color:#c0392b;font-size:13px;margin-top:-8px;margin-bottom:12px;display:none">Senha incorreta.</div>
+    <div class="modal-btns">
+      <button class="btn-modal btn-modal-cancel" onclick="fecharModal()">Cancelar</button>
+      <button class="btn-modal btn-modal-primary" onclick="login()">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ADMIN PANEL -->
+<div class="modal-overlay" id="modal-admin">
+  <div class="admin-panel">
+    <h2>Painel Admin</h2>
+    <p class="sub">Atualize os produtos fazendo upload da planilha exportada da Shopee.</p>
+
+    <div class="msg" id="admin-msg"></div>
+
+    <div class="dropzone-admin" id="dz">
+      <input type="file" id="csv-input" accept=".csv,.xlsx"/>
+      <div class="dz-emoji">📊</div>
+      <p><strong>Clique ou arraste aqui</strong><br/>CSV ou XLSX exportado da Shopee Affiliates</p>
+    </div>
+    <div class="fname" id="fname"></div>
+
+    <button class="btn-upload" id="btn-upload" disabled onclick="uploadCSV()">
+      Atualizar Produtos
+    </button>
+    <button class="btn-logout" onclick="fecharAdmin()">Fechar</button>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ─────────────────────────────────────────────────────────────────
+const ADMIN_PASS = "admin123"; // ← TROQUE ESSA SENHA!
+const STORAGE_KEY = "vitrine_produtos";
+const PER_PAGE = 24;
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let todos = [];
+let filtrados = [];
+let pagina = 1;
+let ordemAtual = 'todos';
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try { todos = JSON.parse(saved); } catch(e) { todos = []; }
+  }
+  aplicarFiltro();
+});
+
+// ── RENDER ─────────────────────────────────────────────────────────────────
+function renderizar() {
+  const grid = document.getElementById('grid');
+  const loadWrap = document.getElementById('load-more-wrap');
+  document.getElementById('total-count').textContent = filtrados.length;
+
+  if (filtrados.length === 0) {
+    grid.innerHTML = `
+      <div class="empty">
+        <div class="big">🔍</div>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Tente outro termo de busca</p>
+      </div>`;
+    loadWrap.style.display = 'none';
+    return;
+  }
+
+  const slice = filtrados.slice(0, pagina * PER_PAGE);
+  grid.innerHTML = slice.map(p => cardHTML(p)).join('');
+
+  loadWrap.style.display = filtrados.length > pagina * PER_PAGE ? 'block' : 'none';
+}
+
+function cardHTML(p) {
+  const preco = p.preco_referencia ? `R$ ${Number(p.preco_referencia).toFixed(2).replace('.', ',')}` : '';
+  const original = p.preco_referencia && p.comissao_pct
+    ? `R$ ${(p.preco_referencia / (1 - p.comissao_pct/100)).toFixed(2).replace('.', ',')}`
+    : '';
+  const desconto = p.comissao_pct ? Math.round(p.comissao_pct) : null;
+  const img = p.imagem_url
+    ? `<img src="${p.imagem_url}" alt="${p.titulo}" loading="lazy" onerror="this.style.display='none'"/>`
+    : `<span style="font-size:48px">🛍️</span>`;
+
+  return `
+    <a class="card" href="${p.url_afiliado}" target="_blank" rel="noopener">
+      <div class="card-img">
+        ${img}
+        ${desconto ? `<span class="card-badge">${desconto}% OFF</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-title">${p.titulo}</div>
+        <div class="card-price">
+          <span class="atual">${preco}</span>
+          ${original ? `<span class="original">${original}</span>` : ''}
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-loja">🛒 Shopee</span>
+        <span class="card-cta">Ver oferta →</span>
+      </div>
+    </a>`;
+}
+
+// ── SEARCH & FILTER ────────────────────────────────────────────────────────
+function buscar() {
+  pagina = 1;
+  aplicarFiltro();
+}
+
+document.getElementById('busca').addEventListener('keydown', e => {
+  if (e.key === 'Enter') buscar();
+});
+
+function filtrar(ordem, btn) {
+  ordemAtual = ordem;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  pagina = 1;
+  aplicarFiltro();
+}
+
+function aplicarFiltro() {
+  const q = document.getElementById('busca').value.toLowerCase().trim();
+  let lista = q ? todos.filter(p => p.titulo.toLowerCase().includes(q)) : [...todos];
+
+  if (ordemAtual === 'menor') {
+    lista.sort((a, b) => (a.preco_referencia || 999999) - (b.preco_referencia || 999999));
+  } else if (ordemAtual === 'maior') {
+    lista.sort((a, b) => (b.comissao_pct || 0) - (a.comissao_pct || 0));
+  } else if (ordemAtual === 'az') {
+    lista.sort((a, b) => a.titulo.localeCompare(b.titulo));
+  }
+
+  filtrados = lista;
+  renderizar();
+}
+
+function verMais() {
+  pagina++;
+  renderizar();
+}
+
+// ── ADMIN AUTH ─────────────────────────────────────────────────────────────
+function abrirAdmin() {
+  if (sessionStorage.getItem('admin_ok') === '1') {
+    document.getElementById('modal-admin').classList.add('open');
+  } else {
+    document.getElementById('modal-login').classList.add('open');
+    setTimeout(() => document.getElementById('senha-input').focus(), 100);
+  }
+}
+
+function fecharModal() {
+  document.getElementById('modal-login').classList.remove('open');
+  document.getElementById('senha-input').value = '';
+  document.getElementById('login-err').style.display = 'none';
+}
+
+function login() {
+  const val = document.getElementById('senha-input').value;
+  if (val === ADMIN_PASS) {
+    sessionStorage.setItem('admin_ok', '1');
+    fecharModal();
+    document.getElementById('modal-admin').classList.add('open');
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+    document.getElementById('senha-input').value = '';
+    document.getElementById('senha-input').focus();
+  }
+}
+
+function fecharAdmin() {
+  document.getElementById('modal-admin').classList.remove('open');
+}
+
+// ── CSV UPLOAD ─────────────────────────────────────────────────────────────
+let arquivoAdmin = null;
+
+document.getElementById('csv-input').addEventListener('change', function() {
+  arquivoAdmin = this.files[0];
+  if (arquivoAdmin) {
+    document.getElementById('fname').textContent = arquivoAdmin.name;
+    document.getElementById('fname').style.display = 'block';
+    document.getElementById('btn-upload').disabled = false;
+  }
+});
+
+const dz = document.getElementById('dz');
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag'); });
+dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
+dz.addEventListener('drop', e => {
+  e.preventDefault();
+  dz.classList.remove('drag');
+  const f = e.dataTransfer.files[0];
+  if (f) {
+    arquivoAdmin = f;
+    document.getElementById('fname').textContent = f.name;
+    document.getElementById('fname').style.display = 'block';
+    document.getElementById('btn-upload').disabled = false;
+  }
+});
+
+function uploadCSV() {
+  if (!arquivoAdmin) return;
+  const btn = document.getElementById('btn-upload');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Processando...';
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const text = e.target.result;
+      const linhas = text.trim().split('\n');
+      const header = linhas[0].split(',').map(h => h.trim().replace(/"/g, ''));
+
+      const idx = {
+        nome:      header.indexOf('Item Name'),
+        preco:     header.indexOf('Price'),
+        link:      header.indexOf('Offer Link'),
+        comissao:  header.indexOf('Commission Rate'),
+        produto:   header.indexOf('Product Link'),
+      };
+
+      const produtos = [];
+      for (let i = 1; i < linhas.length; i++) {
+        const cols = parseCsvLine(linhas[i]);
+        const link = (cols[idx.link] || '').trim();
+        if (!link || link === 'nan') continue;
+
+        const nome = (cols[idx.nome] || `Produto #${i}`).trim();
+        const preco = parseFloat((cols[idx.preco] || '0').replace(',', '.')) || 0;
+        const com = parseFloat((cols[idx.comissao] || '0').replace('%', '')) || 0;
+
+        produtos.push({
+          titulo: nome,
+          url_afiliado: link,
+          preco_referencia: preco,
+          comissao_pct: com,
+          imagem_url: '',
+          loja: 'shopee',
+        });
+      }
+
+      if (produtos.length === 0) throw new Error('Nenhum produto válido encontrado no arquivo.');
+
+      todos = produtos;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+      pagina = 1;
+      aplicarFiltro();
+
+      mostrarMsg(`✅ ${produtos.length} produtos carregados com sucesso!`, 'ok');
+    } catch(err) {
+      mostrarMsg(`❌ Erro: ${err.message}`, 'err');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Atualizar Produtos';
+    }
+  };
+  reader.readAsText(arquivoAdmin, 'UTF-8');
+}
+
+function parseCsvLine(line) {
+  const result = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    if (line[i] === '"') {
+      inQuotes = !inQuotes;
+    } else if (line[i] === ',' && !inQuotes) {
+      result.push(cur.trim());
+      cur = '';
+    } else {
+      cur += line[i];
+    }
+  }
+  result.push(cur.trim());
+  return result;
+}
+
+function mostrarMsg(txt, tipo) {
+  const el = document.getElementById('admin-msg');
+  el.textContent = txt;
+  el.className = `msg ${tipo}`;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 5000);
+}
+
+// Fechar modal clicando fora
+document.getElementById('modal-login').addEventListener('click', function(e) {
+  if (e.target === this) fecharModal();
+});
+document.getElementById('modal-admin').addEventListener('click', function(e) {
+  if (e.target === this) fecharAdmin();
+});
+</script>
+</body>
+</html>
